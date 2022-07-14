@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.calendar {
+  width: 50vw;
+}
+
+/* header */
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+/* days */
+.days{
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* dates */
+.dates{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.date {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #f0f2f7;
+  font-size: 1.6rem;
+}
