@@ -36,6 +36,7 @@ body {
   cursor: pointer;
   padding: 0 10px;
   transition: all 0.3s;
+  user-select: none;
 }
 
 .header button:hover {
@@ -62,7 +63,7 @@ body {
   padding: 20px 0;
   font-size: 1.6rem;
   transition: all 0.3s;
-  border: 2px solid transparent;
+  border: 3px solid transparent;
   color: rgba(0, 0, 0, 0.36);
   cursor: pointer;
   background-color: rgba(166, 233, 255, 0.38);
@@ -72,7 +73,10 @@ body {
   color: #000;
 }
 
-.date:hover,
-.date:focus {
-  border: 2px solid #787878;
+.date:hover {
+  border-color: #787878;
+}
+
+.date.selected {
+  border-color: #00b7ff;
 }

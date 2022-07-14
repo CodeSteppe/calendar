@@ -24,7 +24,8 @@ class Calendar {
   #init = () => {
     const defaultYear = this.defaultDate.getFullYear();
     const defaultMonth = this.defaultDate.getMonth() + 1;
-    this.#setYearMonth(defaultYear, defaultMonth);
+    const defaultDate = this.defaultDate.getDate();
+    this.#setDate(defaultYear, defaultMonth, defaultDate);
     this.#listenEvents();
   }
 
@@ -37,12 +38,12 @@ class Calendar {
     // last year
     lastYearButton.addEventListener('click', () => {
       this.#year--;
-      this.#setYearMonth(this.#year, this.#month);
+      this.#setDate(this.#year, this.#month);
     });
     // next year
     nextYearButton.addEventListener('click', () => {
       this.#year++;
-      this.#setYearMonth(this.#year, this.#month);
+      this.#setDate(this.#year, this.#month);
     });
     // last month
     lastMonthButton.addEventListener('click', () => {
@@ -52,7 +53,7 @@ class Calendar {
       } else {
         this.#month--;
       }
-      this.#setYearMonth(this.#year, this.#month);
+      this.#setDate(this.#year, this.#month);
     });
     // next month
     nextMonthButton.addEventListener('click', () => {
@@ -62,27 +63,30 @@ class Calendar {
       } else {
         this.#month++
       }
-      this.#setYearMonth(this.#year, this.#month);
+      this.#setDate(this.#year, this.#month);
     });
     // click dates
     this.element.addEventListener('click', (e) => {
       if (e.target.classList.contains('date')) {
-        console.log(e.target.dataset.date);
+        console.log(e.target.title);
+        const params = e.target.title.split('-').map(str => parseInt(str, 10));
+        this.#setDate(...params);
       }
     });
   }
 
-  #setYearMonth = (year, month) => {
+  #setDate = (year, month, date) => {
     this.#year = year;
     this.#month = month;
+    this.#date = date;
     // the only place to do renders
-    this.#renderYearMonth();
+    this.#renderCurrentDate();
     this.#renderDates();
   }
 
-  #renderYearMonth = () => {
+  #renderCurrentDate = () => {
     const currentYearMonth = this.element.querySelector('.currentYearMonth');
-    currentYearMonth.textContent = `${this.#year} - ${this.#month}`
+    currentYearMonth.textContent = this.#getDateString(this.#year, this.#month, this.#date);
   }
 
   #getLastMonthInfo = () => {
@@ -117,6 +121,14 @@ class Calendar {
     }
   }
 
+  #getDateString = (year, month, date) => {
+    if (date) {
+      return `${year}-${month}-${date}`;
+    } else {
+      return `${year}-${month}`;
+    }
+  }
+
   #renderDates = () => {
     // DOM
     const datesEL = this.element.querySelector('.dates');
@@ -135,19 +147,22 @@ class Calendar {
       if (firstDay > 1 && i < firstDay) {
         // dates in last month
         date = dayCountInLastMonth - (firstDay - i) + 1;
-        dateString = `${yearOfLastMonth}-${lastMonth}-${date}`;
+        dateString = this.#getDateString(yearOfLastMonth, lastMonth, date);
       } else if (i >= dayCountInCurrentMonth + firstDay) {
         // dates in next month
         date = i - (dayCountInCurrentMonth + firstDay) + 1;
-        dateString = `${yearOfNextMonth}-${nextMonth}-${date}`;
+        dateString = this.#getDateString(yearOfNextMonth, nextMonth, date);
       } else {
         // dates in currrent month
         date = i - firstDay + 1;
-        dateString = `${this.#year}-${this.#month}-${date}`;
+        dateString = this.#getDateString(this.#year, this.#month, date);
         dateEL.classList.add('currentMonth');
+        if (date === this.#date) {
+          dateEL.classList.add('selected');
+        }
       }
       dateEL.textContent = date;
-      dateEL.dataset.date = dateString;
+      dateEL.title = dateString;
       datesEL.append(dateEL);
     }
   }
