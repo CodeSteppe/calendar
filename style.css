@@ -9,7 +9,7 @@ body {
   height: 100vh;
   display: grid;
   place-items: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .calendar {
@@ -19,17 +19,25 @@ body {
 /* header */
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
 }
 
 .header button {
-  border: none;
+  border: 2px solid transparent;
   outline: none;
   background-color: transparent;
+  cursor: pointer;
+  padding: 0 10px;
+  transition: all 0.3s;
+}
+
+.header button:hover {
+  border: 2px solid #787878;
 }
 
 /* days */
-.days{
+.days {
   display: flex;
   justify-content: space-around;
   text-align: center;
@@ -37,7 +45,7 @@ body {
 }
 
 /* dates */
-.dates{
+.dates {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 4px;
@@ -48,4 +56,11 @@ body {
   padding: 20px 0;
   background-color: #f0f2f7;
   font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.date:hover {
+  border: 2px solid #787878;
 }
