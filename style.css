@@ -9,7 +9,8 @@ body {
   height: 100vh;
   display: grid;
   place-items: center;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .calendar {
@@ -24,10 +25,12 @@ body {
   margin-bottom: 20px;
 }
 
-.currentYearMonth {
-  font-size: 1.6rem;
+.currentDate {
+  font-size: 2rem;
   font-weight: bold;
-  color: deepskyblue;
+  color: #ff2189;
+  min-width: 240px;
+  text-align: center;
 }
 
 .header button {
@@ -37,10 +40,11 @@ body {
   cursor: pointer;
   padding: 0 10px;
   transition: all 0.3s;
+  font-size: 1.2rem;
 }
 
 .header button:hover {
-  border: 2px solid #787878;
+  border: 2px solid #ff2189;
 }
 
 /* days */
@@ -48,14 +52,14 @@ body {
   display: flex;
   justify-content: space-around;
   text-align: center;
-  padding: 10px 0;
+  padding: 20px 0;
 }
 
 /* dates */
 .dates {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
+  gap: 8px;
 }
 
 .date {
@@ -66,17 +70,20 @@ body {
   border: 3px solid transparent;
   color: rgba(0, 0, 0, 0.36);
   cursor: pointer;
-  background-color: rgba(166, 233, 255, 0.25);
+  background-color: transparent;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 .date.currentMonth {
   color: #000;
 }
 
-.date:hover {
-  border-color: #787878;
+.date:hover,
+.date.selected {
+  border-color: #ff2189;
 }
 
 .date.selected {
-  border-color: #00b7ff;
+  background-color: rgba(255, 33, 137, 0.8);
+  color: #fff;
 }

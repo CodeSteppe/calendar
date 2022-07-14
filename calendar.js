@@ -86,7 +86,7 @@ class Calendar {
   }
 
   #renderCurrentDate = () => {
-    const currentDateEL = this.element.querySelector('.currentYearMonth');
+    const currentDateEL = this.element.querySelector('.currentDate');
     this.#dateString = this.#getDateString(this.#year, this.#month, this.#date);
     currentDateEL.textContent = this.#dateString;
   }
