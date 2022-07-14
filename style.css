@@ -23,6 +23,12 @@ body {
   margin-bottom: 20px;
 }
 
+.currentYearMonth {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: deepskyblue;
+}
+
 .header button {
   border: 2px solid transparent;
   outline: none;
@@ -54,13 +60,19 @@ body {
 .date {
   text-align: center;
   padding: 20px 0;
-  background-color: #f0f2f7;
   font-size: 1.6rem;
-  cursor: pointer;
   transition: all 0.3s;
   border: 2px solid transparent;
+  color: rgba(0, 0, 0, 0.36);
+  cursor: pointer;
+  background-color: rgba(166, 233, 255, 0.38);
 }
 
-.date:hover {
+.date.currentMonth {
+  color: #000;
+}
+
+.date:hover,
+.date:focus {
   border: 2px solid #787878;
 }
