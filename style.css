@@ -66,7 +66,7 @@ body {
   border: 3px solid transparent;
   color: rgba(0, 0, 0, 0.36);
   cursor: pointer;
-  background-color: rgba(166, 233, 255, 0.38);
+  background-color: rgba(166, 233, 255, 0.25);
 }
 
 .date.currentMonth {
