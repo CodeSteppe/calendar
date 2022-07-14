@@ -13,7 +13,8 @@ body {
 }
 
 .calendar {
-  width: 50vw;
+  width: 70vw;
+  user-select: none;
 }
 
 /* header */
@@ -36,7 +37,6 @@ body {
   cursor: pointer;
   padding: 0 10px;
   transition: all 0.3s;
-  user-select: none;
 }
 
 .header button:hover {

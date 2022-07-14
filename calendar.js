@@ -134,11 +134,15 @@ class Calendar {
   #renderDates = (reRender) => {
     // DOM
     const datesEL = this.element.querySelector('.dates');
-    datesEL.innerHTML = '';
     if (!reRender) {
-
+      const dateELs = datesEL.querySelectorAll('.date');
+      for (const el of dateELs) {
+        el.classList.toggle('selected', el.title === this.#dateString);
+      }
+      return;
     }
 
+    datesEL.innerHTML = '';
     const dayCountInCurrentMonth = this.#getDayCount(this.#year, this.#month);
     const firstDay = this.#getDayOfFirstDate();
     const { lastMonth, yearOfLastMonth, dayCountInLastMonth } = this.#getLastMonthInfo();
