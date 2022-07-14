@@ -20,6 +20,7 @@ class Calendar {
   // start from 1
   #month;
   #date;
+  #dateString;
 
   #init = () => {
     const defaultYear = this.defaultDate.getFullYear();
@@ -70,23 +71,24 @@ class Calendar {
       if (e.target.classList.contains('date')) {
         console.log(e.target.title);
         const params = e.target.title.split('-').map(str => parseInt(str, 10));
-        this.#setDate(...params);
+        this.#setDate(...params, false);
       }
     });
   }
 
-  #setDate = (year, month, date) => {
+  #setDate = (year, month, date, reRenderDate = true) => {
     this.#year = year;
     this.#month = month;
     this.#date = date;
     // the only place to do renders
     this.#renderCurrentDate();
-    this.#renderDates();
+    this.#renderDates(reRenderDate);
   }
 
   #renderCurrentDate = () => {
-    const currentYearMonth = this.element.querySelector('.currentYearMonth');
-    currentYearMonth.textContent = this.#getDateString(this.#year, this.#month, this.#date);
+    const currentDateEL = this.element.querySelector('.currentYearMonth');
+    this.#dateString = this.#getDateString(this.#year, this.#month, this.#date);
+    currentDateEL.textContent = this.#dateString;
   }
 
   #getLastMonthInfo = () => {
@@ -129,10 +131,13 @@ class Calendar {
     }
   }
 
-  #renderDates = () => {
+  #renderDates = (reRender) => {
     // DOM
     const datesEL = this.element.querySelector('.dates');
     datesEL.innerHTML = '';
+    if (!reRender) {
+
+    }
 
     const dayCountInCurrentMonth = this.#getDayCount(this.#year, this.#month);
     const firstDay = this.#getDayOfFirstDate();
