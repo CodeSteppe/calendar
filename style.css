@@ -1,3 +1,6 @@
+:root {
+  font-size: 2vmin;
+}
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +16,7 @@ body {
 }
 
 .calendar {
-  width: 80vw;
+  width: 90vw;
   user-select: none;
 }
 
@@ -28,7 +31,6 @@ body {
   font-size: 2rem;
   font-weight: bold;
   color: #ff2189;
-  min-width: 240px;
   text-align: center;
 }
 
@@ -83,6 +85,6 @@ body {
 }
 
 .date.selected {
-  background-color: rgba(255, 33, 137, 0.8);
+  background-color: #ff2189cc;
   color: #fff;
 }
