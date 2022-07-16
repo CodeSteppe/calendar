@@ -32,6 +32,7 @@ body {
   font-weight: bold;
   color: #ff2189;
   text-align: center;
+  min-width: 24vmin;
 }
 
 .header button {
