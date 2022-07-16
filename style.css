@@ -1,5 +1,6 @@
 :root {
   font-size: 2vmin;
+  --accent-color: #ff2189;
 }
 * {
   margin: 0;
@@ -30,9 +31,9 @@ body {
 .currentDate {
   font-size: 2rem;
   font-weight: bold;
-  color: #ff2189;
+  color: var(--accent-color);
   text-align: center;
-  min-width: 24vmin;
+  min-width: 28vmin;
 }
 
 .header button {
@@ -42,11 +43,11 @@ body {
   cursor: pointer;
   padding: 0 10px;
   transition: all 0.3s;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .header button:hover {
-  border: 2px solid #ff2189;
+  border: 2px solid var(--accent-color);
 }
 
 /* days */
@@ -55,6 +56,8 @@ body {
   justify-content: space-around;
   text-align: center;
   padding: 20px 0;
+  font-size: 1.2rem;
+  color: var(--accent-color);
 }
 
 /* dates */
@@ -82,10 +85,10 @@ body {
 
 .date:hover,
 .date.selected {
-  border-color: #ff2189;
+  border-color: var(--accent-color);
 }
 
 .date.selected {
-  background-color: #ff2189cc;
+  background-color: var(--accent-color);
   color: #fff;
 }
